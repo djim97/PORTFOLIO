@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djimouna Bacary BADJI | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 17, 23, 0.95);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #21262d;
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #58a6ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: #8b949e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #58a6ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-content .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #58a6ff;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(88, 166, 255, 0.3);
+        }
+
+        .hero-content .greeting {
+            font-size: 1.1rem;
+            color: #58a6ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #58a6ff, #bc8cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: #8b949e;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #58a6ff;
+            color: #0d1117;
+        }
+
+        .btn-primary:hover {
+            background: #79b8ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid #30363d;
+            color: #e6edf3;
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            border-color: #58a6ff;
+            color: #58a6ff;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #e6edf3;
+        }
+
+        section .section-line {
+            width: 60px;
+            height: 4px;
+            background: #58a6ff;
+            border-radius: 2px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .about-text p {
+            color: #8b949e;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .about-info {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .info-item {
+            background: #161b22;
+            padding: 1.2rem;
+            border-radius: 10px;
+            border: 1px solid #21262d;
+        }
+
+        .info-item .label {
+            font-size: 0.85rem;
+            color: #58a6ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-item .value {
+            font-size: 1.05rem;
+            color: #e6edf3;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 12px;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-card .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-card .skill-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-3px);
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #58a6ff;
+        }
+
+        .project-card p {
+            color: #8b949e;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card .tech-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(88, 166, 255, 0.1);
+            color: #58a6ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-card .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #58a6ff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .project-card .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact */
+        #contact {
+            text-align: center;
+        }
+
+        #contact .section-line {
+            margin: 0 auto 2.5rem;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: #8b949e;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #161b22;
+            border: 1px solid #21262d;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            color: #e6edf3;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: #58a6ff;
+            color: #58a6ff;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #21262d;
+            color: #484f58;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">A propos</a></li>
+            <li><a href="#competences">Comp&eacute;tences</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <img src="https://avatars.githubusercontent.com/u/255569156?v=4" alt="Djimouna Bacary BADJI" class="avatar">
+            <p class="greeting">Bienvenue sur mon portfolio</p>
+            <h1>Djimouna Bacary BADJI</h1>
+            <p class="subtitle">
+                &Eacute;l&egrave;ve Ing&eacute;nieur en 1&egrave;re ann&eacute;e de DITI &mdash;
+                Dipl&ocirc;me Ing&eacute;nieur en Techniques Informatiques &agrave; l'ISI Dakar
+            </p>
+            <div class="hero-buttons">
+                <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+                <a href="https://github.com/djim97" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="apropos">
+        <h2>&Agrave; propos de moi</h2>
+        <div class="section-line"></div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    Je suis Djimouna Bacary BADJI, &eacute;tudiant passionn&eacute; en ing&eacute;nierie informatique
+                    &agrave; l'Institut Sup&eacute;rieur d'Informatique (ISI) de Dakar.
+                </p>
+                <p>
+                    Actuellement en 1&egrave;re ann&eacute;e du Dipl&ocirc;me Ing&eacute;nieur en Techniques
+                    Informatiques (DITI), mon cycle d'ing&eacute;nieur est ax&eacute; sur les techniques du
+                    g&eacute;nie logiciel, les syst&egrave;mes d'information et base de donn&eacute;es,
+                    les r&eacute;seaux et syst&egrave;mes.
+                </p>
+                <p>
+                    J'aspire &agrave; la fin de ma formation ajouter &agrave; mes comp&eacute;tences acquises
+                    des notions de s&eacute;curit&eacute;s avanc&eacute;es me sp&eacute;cialisant ainsi en DevSecOps.
+                </p>
+                <p>
+                    Je suis toujours &agrave; la recherche de nouvelles opportunit&eacute;s pour apprendre,
+                    collaborer et contribuer &agrave; des projets innovants.
+                </p>
+            </div>
+            <div class="about-info">
+                <div class="info-item">
+                    <div class="label">Nom complet</div>
+                    <div class="value">Djimouna Bacary BADJI</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Formation</div>
+                    <div class="value">DITI &mdash; ISI Dakar</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Localisation</div>
+                    <div class="value">Dakar, S&eacute;n&eacute;gal</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">Email</div>
+                    <div class="value">dbadjidk@groupeisi.com</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="competences">
+        <h2>Comp&eacute;tences</h2>
+        <div class="section-line"></div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">&#x1F1E8;</div>
+                <div class="skill-name">Langage C</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">&#x1F310;</div>
+                <div class="skill-name">HTML</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">&#x1F3A8;</div>
+                <div class="skill-name">CSS</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">&#x26A1;</div>
+                <div class="skill-name">JavaScript</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">&#x1F40D;</div>
+                <div class="skill-name">Python</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">&#x2615;</div>
+                <div class="skill-name">Java</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">&#x1F4E6;</div>
+                <div class="skill-name">Oracle</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">&#x1F42C;</div>
+                <div class="skill-name">MySQL</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">&#x1F6E0;</div>
+                <div class="skill-name">Git & GitHub</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projets">
+        <h2>Mes Projets</h2>
+        <div class="section-line"></div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Exercices en C</h3>
+                <p>Collection d'exercices et de travaux pratiques en langage C.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C</span>
+                </div>
+                <a href="https://github.com/djim97/C" target="_blank" rel="noopener" class="project-link">Voir sur GitHub &rarr;</a>
+            </div>
+            <div class="project-card">
+                <h3>Structures conditionnelles</h3>
+                <p>Programmes illustrant les structures conditionnelles en C.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C</span>
+                    <span class="tech-tag">Algorithmique</span>
+                </div>
+                <a href="https://github.com/djim97/structure_conditionnelle" target="_blank" rel="noopener" class="project-link">Voir sur GitHub &rarr;</a>
+            </div>
+            <div class="project-card">
+                <h3>Tableaux (Array)</h3>
+                <p>Manipulation et gestion des tableaux en programmation C.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C</span>
+                </div>
+                <a href="https://github.com/djim97/array" target="_blank" rel="noopener" class="project-link">Voir sur GitHub &rarr;</a>
+            </div>
+            <div class="project-card">
+                <h3>Notions de base</h3>
+                <p>Les fondamentaux du langage C : variables, types, op&eacute;rateurs.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C</span>
+                </div>
+                <a href="https://github.com/djim97/Notion_de_base" target="_blank" rel="noopener" class="project-link">Voir sur GitHub &rarr;</a>
+            </div>
+            <div class="project-card">
+                <h3>Modules</h3>
+                <p>Organisation modulaire du code en langage C.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C</span>
+                </div>
+                <a href="https://github.com/djim97/module" target="_blank" rel="noopener" class="project-link">Voir sur GitHub &rarr;</a>
+            </div>
+            <div class="project-card">
+                <h3>Application CRUD</h3>
+                <p>Application web CRUD compl&egrave;te pour la gestion de donn&eacute;es.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+                <a href="https://bacary.gt.tc/html/crud.html" target="_blank" rel="noopener" class="project-link">Voir le projet &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Me Contacter</h2>
+        <div class="section-line"></div>
+        <div class="contact-content">
+            <p>
+                Vous avez un projet ou une opportunit&eacute; ? N'h&eacute;sitez pas &agrave; me contacter !
+            </p>
+            <div class="contact-links">
+                <a href="https://github.com/djim97" target="_blank" rel="noopener" class="contact-link">
+                    &#x2B22; GitHub
+                </a>
+                <a href="mailto:dbadjidk@groupeisi.com" class="contact-link">
+                    &#x2709; dbadjidk@groupeisi.com
+                </a>
+                <a href="tel:+221771477610" class="contact-link">
+                    &#x260E; +221 771477610
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Djimouna Bacary BADJI. Tous droits r&eacute;serv&eacute;s.</p>
+    </footer>
+
+    <!-- Smooth scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
